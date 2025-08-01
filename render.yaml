@@ -1,0 +1,21 @@
+
+services:
+  - type: web
+    name: vitalsynth-api
+    env: docker
+    plan: starter
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 8000
+
+  - type: web
+    name: vitalsynth-leads
+    env: docker
+    plan: starter
+    autoDeploy: true
+    buildCommand: pip install flask
+    startCommand: python lead_capture.py
+    envVars:
+      - key: PORT
+        value: 8080
